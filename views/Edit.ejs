@@ -1,0 +1,461 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <form action="/edit" method="POST">
+        <input type="text" name="NAME" value="<%= User.Name %>">
+        <input type="email" name="EMAIL" value="<%= User.Email %>">
+        <input type="submit" value="Update">
+    </form>
+
+        <br>
+        <% include ./Layout/Header.ejs %>
+</body>
+</html>
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>OneTech</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="OneTech shop project">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="homestyles/bootstrap.min.css">
+    <link href="homestyles/fontawesome-all.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="homeplugins/OwlCarousel2-2.2.1/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="homeplugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+    <link rel="stylesheet" type="text/css" href="homeplugins/OwlCarousel2-2.2.1/animate.css">
+    <link rel="stylesheet" type="text/css" href="homeplugins/slick-1.8.0/slick.css">
+    <link rel="stylesheet" type="text/css" href="homestyles/main_styles.css">
+    <link rel="stylesheet" type="text/css" href="homestyles/responsive.css">
+
+
+
+    
+    <!--===============================================================================================-->	
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+    <!--===============================================================================================-->	
+        <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+    <!--===============================================================================================-->	
+        <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+
+    <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="css/util.css">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+
+        <link rel="stylesheet" type="text/css" href="/images">
+
+</head>
+
+<body>
+
+    <div class="super_container">
+
+        <!-- Header -->
+
+        <header class="header">
+
+            <!-- Top Bar -->
+
+            <div class="top_bar">
+                <div class="container">
+                    <div class="row">
+                        <div class="col d-flex flex-row">
+
+
+                            <div class="top_bar_content ml-auto">
+                       
+                                <div class="top_bar_user">
+                                    <div class="user_icon"><img src="images/user.svg" alt=""></div>
+                                    <% if(!person) { %>
+                                    <div><a href="/Register">Register</a></div>
+                                    <div><a href="/Login">Sign in</a></div>
+                                    <% } else { %>
+                                    <div><a href="/profile">
+                                            <%=  person.Name %></a></div>
+                                </div><a href="/logout">Logout</a>
+                            </div>
+
+                            <% } %>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+
+    <!-- Header Main -->
+
+    <div class="header_main">
+        <div class="container">
+            <div class="row">
+
+                <!-- Logo -->
+                <div class="col-lg-2 col-sm-3 col-3 order-1">
+                    <div class="logo_container">
+                        <div class="logo"><a href="/">E-BOT</a></div>
+                    </div>
+                </div>
+
+                <!-- Search -->
+          
+
+                <!-- Wishlist -->
+                <div class="col-lg-4 col-9 order-lg-3 order-2 text-lg-left text-right"   style="margin-left: 29%">
+                    <div class="wishlist_cart d-flex flex-row align-items-center justify-content-end">
+                        <div class="wishlist d-flex flex-row align-items-center justify-content-end">
+                            <div class="wishlist_icon" href="#"><img src="images/heart.png" alt=""></div>
+                            <div class="wishlist_content">
+                                <div class="wishlist_text"><a href="/wishlist">Wishlist</a></div>
+
+                            </div>
+                        </div>
+
+                        <!-- Cart -->
+                        <div class="cart">
+                            <div class="cart_container d-flex flex-row align-items-center justify-content-end">
+                                <div class="cart_icon">
+                                    <img src="images/cart.png" alt="">
+                                   
+                                </div>
+                                <div class="cart_content">
+                                    <div class="cart_text"><a href="/mycart">Cart</a></div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation -->
+
+    <nav class="main_nav">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+
+                    <div class="main_nav_content d-flex flex-row">
+
+                        <!-- Categories Menu -->
+
+
+
+                        <!-- Main Nav Menu -->
+
+                        <!-- Menu Trigger -->
+
+                        <div class="menu_trigger_container ml-auto">
+                            <div class="menu_trigger d-flex flex-row align-items-center justify-content-end">
+                                <div class="menu_burger">
+                                    <div class="menu_trigger_text">menu</div>
+                                    <div class="cat_burger menu_burger_inner"><span></span><span></span><span></span></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Menu -->
+
+    <div class="page_menu">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+
+                    <div class="page_menu_content">
+
+                        <div class="page_menu_search">
+                            <form action="#">
+                                <input type="search" required="required" class="page_menu_search_input" placeholder="Search for products...">
+                            </form>
+                        </div>
+                        <ul class="page_menu_nav">
+                            <li class="page_menu_item has-children">
+                                <a href="#">Language<i class="fa fa-angle-down"></i></a>
+                                <ul class="page_menu_selection">
+                                    <li><a href="#">English<i class="fa fa-angle-down"></i></a></li>
+                                    <li><a href="#">Italian<i class="fa fa-angle-down"></i></a></li>
+                                    <li><a href="#">Spanish<i class="fa fa-angle-down"></i></a></li>
+                                    <li><a href="#">Japanese<i class="fa fa-angle-down"></i></a></li>
+                                </ul>
+                            </li>
+                            <li class="page_menu_item has-children">
+                                <a href="#">Currency<i class="fa fa-angle-down"></i></a>
+                                <ul class="page_menu_selection">
+                                    <li><a href="#">US Dollar<i class="fa fa-angle-down"></i></a></li>
+                                    <li><a href="#">EUR Euro<i class="fa fa-angle-down"></i></a></li>
+                                    <li><a href="#">GBP British Pound<i class="fa fa-angle-down"></i></a></li>
+                                    <li><a href="#">JPY Japanese Yen<i class="fa fa-angle-down"></i></a></li>
+                                </ul>
+                            </li>
+
+                            <li class="page_menu_item"><a href="blog.html">blog<i class="fa fa-angle-down"></i></a></li>
+                            <li class="page_menu_item"><a href="contact.html">contact<i class="fa fa-angle-down"></i></a></li>
+                        </ul>
+                        <div class="top_bar_user">
+                            <div class="user_icon"><img src="images/user.svg" alt=""></div>
+
+                            <% if(!person) { %>
+
+                            <div><a href="/Register">Register</a></div>
+                            <div><a href="/Login">Sign in</a></div>
+
+                            <% } else { %>
+                            <div><a href="/profile">
+                                    <%=  person.Name %></a></div>
+                        </div><a href="/logout">Logout</a>
+                    </div>
+
+                    <% } %>
+
+                </div>
+
+                <!-- <div class="menu_contact">
+								<div><a href="#">Register</a></div>
+								<div><a href="#">Sign in</a></div>
+							</div> -->
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+
+    </header>
+
+
+    <main class="osh-container" id="content" role="main"  style="margin-left: 13%">
+            <div class="l-sidebar" style="background-color: rgb(122, 116, 116)">
+                <div class="customer_menu">
+                    <h3 class="fct-acc-menu pbxm">My account</h3>
+                    <ul id="yw0">
+                        <li class="ptxxs pbm">
+                            <a href="/profile">Profile</a>
+                        </li>
+                        <li class="ptxxs pbm fct-subCategorySelectedItem ">
+                            <a href="/edit"><b>Edit personal information</b></a>
+                        </li>
+    
+                    
+                        <li class="ptxxs pb m">
+                            <a href="/mycart">My Cart
+                                </a>
+                        </li>
+                        <li class="ptxxs pbm">
+                            <a class="fct-subCategoryUnselectedItem sel-menu-wishlist" href="/wishlist">My wishlist</a>
+                    
+                    </ul>
+                </div>
+            </div>
+        </main>
+    
+   
+    <div id="account" style="margin-right:15%">
+        <h2>Edit Profile</h2>
+        <form class="form-horizontal" method="POST" action="/edit">
+            <div class="form-group">
+                    <label class="control-label col-sm-2" for="pwd">Name</label>
+            <div class="wrap-input100 validate-input m-b-20">
+                <input class="input100" type="text" name="NAME" value="<%= User.Name %>" required>
+                <span class="focus-input100"></span>
+            </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="pwd">Contact No</label>
+        <div class="wrap-input100 validate-input m-b-20">
+            <input class="input100" type="tel" name="Contactno" value="<%= User.Contact_Number %>"  placeholder="xxxx-xxxxxxx" pattern="^\d{4}-\d{7}$"   required>
+            <span class="focus-input100"></span>
+        </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="pwd">Location</label>
+    <div class="wrap-input100 validate-input m-b-20">
+        <input class="input100" type="text" id="myInput" name="location" value="<%= User.location %>" required>
+        <span class="focus-input100"></span>
+    </div>
+    </div>
+           
+            <div class="form-group">
+                    <label class="control-label col-sm-2" for="pwd">Email</label>
+            <div class="wrap-input100 validate-input m-b-20">
+                
+                <input class="input100" type="email" name="EMAIL" value="<%= User.Email %>"  pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$" required>
+                <span class="focus-input100"></span>
+            </div>
+            </div>
+         
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+
+                </div>
+            </div>
+          
+            <div  class="container-login100-form-btn">
+                    <button style="margin-right:20%" class="login100-form-btn">
+                       SAVE
+                    </button>
+                </div>
+
+        </form>
+    </div>
+
+
+
+
+
+    <script src="homejs/jquery-3.3.1.min.js"></script>
+    <script src="homestyles/popper.js"></script>
+    <script src="homestyles/bootstrap.min.js"></script>
+    <script src="homeplugins/greensock/TweenMax.min.js"></script>
+    <script src="homeplugins/greensock/TimelineMax.min.js"></script>
+    <script src="homeplugins/scrollmagic/ScrollMagic.min.js"></script>
+    <script src="homeplugins/greensock/animation.gsap.min.js"></script>
+    <script src="homeplugins/greensock/ScrollToPlugin.min.js"></script>
+    <script src="homeplugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+    <script src="homeplugins/slick-1.8.0/slick.js"></script>
+    <script src="homeplugins/easing/easing.js"></script>
+    <script src="homejs/custom.js"></script>
+</body>
+
+<script>
+        var field = document.querySelector('[name="NAME"]');
+    
+    field.addEventListener('keypress', function ( event ) {  
+       var key = event.keyCode;
+        if (key === 32) {
+          event.preventDefault();
+        }
+    });
+    </script>
+    <script>
+        var countries = ["Quetta","Peshawar","Lahore","Faisalabad","Rawalpindi","Multan","Hyderabad","Rawalakot","Karachi" ,"Islamabad"];
+        function autocomplete(inp, arr) {
+      /*the autocomplete function takes two arguments,
+      the text field element and an array of possible autocompleted values:*/
+      var currentFocus;
+      /*execute a function when someone writes in the text field:*/
+      inp.addEventListener("input", function(e) {
+          var a, b, i, val = this.value;
+          /*close any already open lists of autocompleted values*/
+          closeAllLists();
+          if (!val) { return false;}
+          currentFocus = -1;
+          /*create a DIV element that will contain the items (values):*/
+          a = document.createElement("DIV");
+          a.setAttribute("id", this.id + "autocomplete-list");
+          a.setAttribute("class", "autocomplete-items");
+          /*append the DIV element as a child of the autocomplete container:*/
+          this.parentNode.appendChild(a);
+          /*for each item in the array...*/
+          for (i = 0; i < arr.length; i++) {
+            /*check if the item starts with the same letters as the text field value:*/
+            if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+              /*create a DIV element for each matching element:*/
+              b = document.createElement("DIV");
+              /*make the matching letters bold:*/
+              b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+              b.innerHTML += arr[i].substr(val.length);
+              /*insert a input field that will hold the current array item's value:*/
+              b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+              /*execute a function when someone clicks on the item value (DIV element):*/
+                  b.addEventListener("click", function(e) {
+                  /*insert the value for the autocomplete text field:*/
+                  inp.value = this.getElementsByTagName("input")[0].value;
+                  /*close the list of autocompleted values,
+                  (or any other open lists of autocompleted values:*/
+                  closeAllLists();
+              });
+              a.appendChild(b);
+            }
+          }
+      });
+      /*execute a function presses a key on the keyboard:*/
+      inp.addEventListener("keydown", function(e) {
+          var x = document.getElementById(this.id + "autocomplete-list");
+          if (x) x = x.getElementsByTagName("div");
+          if (e.keyCode == 40) {
+            /*If the arrow DOWN key is pressed,
+            increase the currentFocus variable:*/
+            currentFocus++;
+            /*and and make the current item more visible:*/
+            addActive(x);
+          } else if (e.keyCode == 38) { //up
+            /*If the arrow UP key is pressed,
+            decrease the currentFocus variable:*/
+            currentFocus--;
+            /*and and make the current item more visible:*/
+            addActive(x);
+          } else if (e.keyCode == 13) {
+            /*If the ENTER key is pressed, prevent the form from being submitted,*/
+            e.preventDefault();
+            if (currentFocus > -1) {
+              /*and simulate a click on the "active" item:*/
+              if (x) x[currentFocus].click();
+            }
+          }
+      });
+      function addActive(x) {
+        /*a function to classify an item as "active":*/
+        if (!x) return false;
+        /*start by removing the "active" class on all items:*/
+        removeActive(x);
+        if (currentFocus >= x.length) currentFocus = 0;
+        if (currentFocus < 0) currentFocus = (x.length - 1);
+        /*add class "autocomplete-active":*/
+        x[currentFocus].classList.add("autocomplete-active");
+      }
+      function removeActive(x) {
+        /*a function to remove the "active" class from all autocomplete items:*/
+        for (var i = 0; i < x.length; i++) {
+          x[i].classList.remove("autocomplete-active");
+        }
+      }
+      function closeAllLists(elmnt) {
+        /*close all autocomplete lists in the document,
+        except the one passed as an argument:*/
+        var x = document.getElementsByClassName("autocomplete-items");
+        for (var i = 0; i < x.length; i++) {
+          if (elmnt != x[i] && elmnt != inp) {
+          x[i].parentNode.removeChild(x[i]);
+        }
+      }
+    }
+    /*execute a function when someone clicks in the document:*/
+    document.addEventListener("click", function (e) {
+        closeAllLists(e.target);
+    });
+    }
+    
+    </script>
+    <script>
+    autocomplete(document.getElementById("myInput"), countries);        
+            </script>
+</html>

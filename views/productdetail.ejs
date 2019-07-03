@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous"></script>
+
+    <script src="/js/custom.js"></script>
+    <title>Document</title>
+
+<style>
+.col-md-4 img{
+margin-top: 7%;
+    padding-top: 6%;
+    margin-left: 7%;
+    height: 398px;
+}
+
+</style>
+
+
+</head>
+
+<body>
+
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-4"  >
+                <img src="/product/<%= detail.File.Filename %>">
+            </div>
+
+            <div class="col-md-4">
+
+            </div>
+
+            <div class="col-md-4">
+                <h1>
+                    <%= detail.Description %>
+                </h1>
+                <h2>
+                    <%= detail.Price %>
+                </h2>
+                <h3>
+                    <%= detail.Name %>
+                </h3>
+                <form>
+                    <div class="btn-group" role="group" aria-label="....">
+                        <h6>quantity</h6>
+                        <input type="hidden" name="quantity" id="quantity" value="1">
+                        <button type="button" id="minus" class="btn btn-default">-</button>
+                        <button type="button" id="total" class="btn btn-default">1</button>
+                        <button type="button" id="plus" class="btn btn-default">+</button>
+                    </div>
+
+
+                    <div class="from-group">
+                        <input type="hidden" name="product_id" id="quantity" value="<%= detail._id %> ">
+                        <input type="hidden" value="<%= detail.Price %>">
+                        <input type="hidden" name="priceHidden" id="priceHidden" value="<%= detail.Price %>">
+
+                        <h5>Total price </h5>
+                        <input type="button" name="priceValue" id="priceValue" class="form-control" value="<%= detail.Price %>">
+                    </div>
+                </form>
+
+                <form action="/mycart" method="POST">
+                    <input type="hidden" name='product_id' value="<%= detail._id %>">
+                    <input type="hidden" name="PIC" value="/product/<%= detail.File.Filename %>">
+                    <input id="formvalue" type="hidden" name="priceValue" value="<%= detail.Price %>">
+                    <input type="hidden" id="formquantity" name="quantity" value="1">
+                    <button type="submit" class="btn btn-primary btn-lg">add to cart</button>
+
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

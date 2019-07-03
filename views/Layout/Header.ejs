@@ -1,0 +1,13 @@
+
+<% if(!person) { %>
+<li><a href="/login">Login</a></li>
+<li><a href="/Register">Register</a></li>
+
+<% } else { %>
+
+
+<li><a href="/profile"><%= person.Name %></a></li>
+<li><a href="/logout">logout</a></li>
+
+
+<% } %>

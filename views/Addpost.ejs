@@ -1,0 +1,136 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        
+
+
+    <form action="/getpost" enctype="multipart/form-data" method="POST" >
+        <input type="file" name="FILE">
+        <label>ENTER PRICE</label>
+        <input type="number" name='PRICE'>
+        <label>product description</label>
+        <input type="text" name="desc" >
+        <label> name</label>
+        <input type="text" name='NAME'>
+       
+        <label>Enter category</label>
+        <select name="CAT" >
+
+        <% for (var i=0 ; i<Categorys.length ; i++ ) {  %>
+
+                
+        
+                <option name="CAT" value="<%= Categorys[i]._id %>"><%= Categorys[i].Cat_name %></option>
+                
+         <%  }  %>
+               
+        </select>
+       
+        <input type="submit"  placeholder="post">
+
+        </form>
+
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>File Upload</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+        function startUpload()
+		{
+			var id = setInterval(frame, 50);
+			var percent = 1;
+			$('.btnprogress').text('Continue')
+			function frame() {
+			if (percent >= 100) {
+			  clearInterval(id);
+			  $('.btnprogress').text('Close')
+			} else {
+			  percent++; 
+			  $('.progress-bar').css('width', percent+'%').attr('aria-valuenow', percent); 
+			}
+		  }
+		}
+		
+		function clickProgress()
+		{
+			var progress = $('.btnprogress').text();
+			
+			if(progress =='Continue')
+			{
+				window.open(window.location.href);
+			}
+			else	
+			{
+				 $('#myModal').modal('toggle');
+			}			
+		}
+		
+  </script>
+</head>
+
+<body>
+
+    <div class="container well" >
+        <form action="/getpost" enctype="multipart/form-data" method="POST">
+            <div class="form-group">
+                <label for="usr">File Name</label>
+                <input type="text" name="NAME" class="form-control" id="usr" required>
+            </div>
+            <div class="form-group">
+                <label for="pwd">Description</label>
+                <input type="text" name="desc" class="form-control" id="pwd" required>
+            </div>
+            <div class="form-group">
+                <label for="pwd">Price</label>
+                <input type="number" name="PRICE" class="form-control" id="pwd" minlength="1">
+            </div>
+
+            <div class="form-group">
+                <label>Enter category</label>
+                <select name="CAT">
+
+                    <% for (var i=0 ; i<Categorys.length ; i++ ) {  %>
+
+
+
+                    <option name="CAT" value="<%= Categorys[i]._id %>">
+                        <%= Categorys[i].Cat_name %>
+                    </option>
+
+                    <%  }  %>
+
+                </select>
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="pwd">Upload</label>
+                <input type="file" name="FILE" class="form-control" id="file" required>
+            </div>
+            <div class="pull-right">
+                <button type="submit" class="btn btn-primary" data-toggle="modal" data-backdrop="static" data-keyboard="false"
+                    data-target="#myModal" onclick="startUpload()">post</button>
+            </div>
+
+        </form>
+    </div>
+
+
+</body>
+
+</html>

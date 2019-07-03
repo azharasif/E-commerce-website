@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>register
+    </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->	
+    <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->	
+    <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/util.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+
+    <link rel="stylesheet" type="text/css" href="/images">
+<!--===============================================================================================-->
+
+</head>
+</head>
+<body>
+
+    
+    
+        <div class="container-login100">
+            <div class="wrap-login100 p-l-55 p-r-55 p-t-80 p-b-30">
+                <form   method="POST" action="/register" class="login100-form validate-form">
+                    <span class="login100-form-title p-b-37">
+                       Get Register YourSelf
+                    </span>
+    
+                    <div class="wrap-input100 validate-input m-b-25" data-validate = "Enter Name">
+                            <input class="input100" type="text" name="NAME" placeholder="Name" required>
+                            <span class="focus-input100"></span>
+                        </div>
+
+
+                        <div class="wrap-input100 validate-input m-b-25" data-validate = "Enter Name">
+                            <input class="input100"   type="tel" name="Contactno" placeholder="xxxx-xxxxxxx" pattern="^\d{4}-\d{7}$"   required>
+                            <span class="focus-input100"></span>
+                        </div>
+
+                        <div class="wrap-input100 validate-input m-b-25" data-validate = "Enter Name">
+                           
+                            <input class="input100" id="myInput" type="text" name="location" placeholder="Location" required>
+                            <span class="focus-input100"></span>
+                        </div>
+
+
+                    <div class="wrap-input100 validate-input m-b-20" data-validate="Enter username or email">
+                        <input class="input100" type="text" name="EMAIL" placeholder="email"  pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$" required>
+                        <span class="focus-input100"></span>
+                    </div>
+    
+                    <div class="wrap-input100 validate-input m-b-25" data-validate = "Enter password">
+                        <input class="input100" type="password" name="PASS" placeholder="password" minlength="4"   maxlength="10" required >
+                        <span class="focus-input100"></span>
+                    </div>
+    
+                    <div class="container-login100-form-btn">
+                        <button class="login100-form-btn">
+                        Register
+                        </button>
+                    </div>
+    
+    
+                   
+    
+                    <div class="text-center">
+                        <p class="text-center small">Don't have an account? <a href="/login">login!</a></p>
+                    </div>
+                </form>
+    
+                
+            </div>
+        </div>
+        
+        
+    
+        <div id="dropDownSelect1"></div>
+        
+    <!--===============================================================================================-->
+        <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+        <script src="vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+        <script src="vendor/bootstrap/js/popper.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+        <script src="vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+        <script src="vendor/daterangepicker/moment.min.js"></script>
+        <script src="vendor/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+        <script src="vendor/countdowntime/countdowntime.js"></script>
+    <!--===============================================================================================-->
+        <script src="js/main.js"></script>
+    
+   
+</body>
+
+<script>
+    var field = document.querySelector('[name="NAME"]');
+
+field.addEventListener('keypress', function ( event ) {  
+   var key = event.keyCode;
+    if (key === 32) {
+      event.preventDefault();
+    }
+});
+</script>
+<script>
+    var countries = ["Quetta","Peshawar","Lahore","Faisalabad","Rawalpindi","Multan","Hyderabad","Rawalakot","Karachi" ,"Islamabad"];
+    function autocomplete(inp, arr) {
+  /*the autocomplete function takes two arguments,
+  the text field element and an array of possible autocompleted values:*/
+  var currentFocus;
+  /*execute a function when someone writes in the text field:*/
+  inp.addEventListener("input", function(e) {
+      var a, b, i, val = this.value;
+      /*close any already open lists of autocompleted values*/
+      closeAllLists();
+      if (!val) { return false;}
+      currentFocus = -1;
+      /*create a DIV element that will contain the items (values):*/
+      a = document.createElement("DIV");
+      a.setAttribute("id", this.id + "autocomplete-list");
+      a.setAttribute("class", "autocomplete-items");
+      /*append the DIV element as a child of the autocomplete container:*/
+      this.parentNode.appendChild(a);
+      /*for each item in the array...*/
+      for (i = 0; i < arr.length; i++) {
+        /*check if the item starts with the same letters as the text field value:*/
+        if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+          /*create a DIV element for each matching element:*/
+          b = document.createElement("DIV");
+          /*make the matching letters bold:*/
+          b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+          b.innerHTML += arr[i].substr(val.length);
+          /*insert a input field that will hold the current array item's value:*/
+          b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+          /*execute a function when someone clicks on the item value (DIV element):*/
+              b.addEventListener("click", function(e) {
+              /*insert the value for the autocomplete text field:*/
+              inp.value = this.getElementsByTagName("input")[0].value;
+              /*close the list of autocompleted values,
+              (or any other open lists of autocompleted values:*/
+              closeAllLists();
+          });
+          a.appendChild(b);
+        }
+      }
+  });
+  /*execute a function presses a key on the keyboard:*/
+  inp.addEventListener("keydown", function(e) {
+      var x = document.getElementById(this.id + "autocomplete-list");
+      if (x) x = x.getElementsByTagName("div");
+      if (e.keyCode == 40) {
+        /*If the arrow DOWN key is pressed,
+        increase the currentFocus variable:*/
+        currentFocus++;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 38) { //up
+        /*If the arrow UP key is pressed,
+        decrease the currentFocus variable:*/
+        currentFocus--;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 13) {
+        /*If the ENTER key is pressed, prevent the form from being submitted,*/
+        e.preventDefault();
+        if (currentFocus > -1) {
+          /*and simulate a click on the "active" item:*/
+          if (x) x[currentFocus].click();
+        }
+      }
+  });
+  function addActive(x) {
+    /*a function to classify an item as "active":*/
+    if (!x) return false;
+    /*start by removing the "active" class on all items:*/
+    removeActive(x);
+    if (currentFocus >= x.length) currentFocus = 0;
+    if (currentFocus < 0) currentFocus = (x.length - 1);
+    /*add class "autocomplete-active":*/
+    x[currentFocus].classList.add("autocomplete-active");
+  }
+  function removeActive(x) {
+    /*a function to remove the "active" class from all autocomplete items:*/
+    for (var i = 0; i < x.length; i++) {
+      x[i].classList.remove("autocomplete-active");
+    }
+  }
+  function closeAllLists(elmnt) {
+    /*close all autocomplete lists in the document,
+    except the one passed as an argument:*/
+    var x = document.getElementsByClassName("autocomplete-items");
+    for (var i = 0; i < x.length; i++) {
+      if (elmnt != x[i] && elmnt != inp) {
+      x[i].parentNode.removeChild(x[i]);
+    }
+  }
+}
+/*execute a function when someone clicks in the document:*/
+document.addEventListener("click", function (e) {
+    closeAllLists(e.target);
+});
+}
+
+</script>
+<script>
+autocomplete(document.getElementById("myInput"), countries);        
+        </script>
+</html>
+
+<!-- 
+
+<h1>Register Page</h1>
+<form method="POST" action="/register">
+    <label>Name</label>
+    <input type="text" name="NAME"/>
+    <br>
+    <br>
+    <label>Gender : </label>
+    <input type="radio" value="Male" name="GENDER">
+    <label>Male</label>
+    <input type="radio" value="Female" name="GENDER">
+    <label>Female</label>
+    <input type="radio" value="Other" name="GENDER">
+    <label>Other</label>
+    <br>
+    <br>
+    <label>Email</label>
+    <input type="text" name="EMAIL"/>
+    <br>
+    <br>
+    <label>Password</label>
+    <input type="password" name="PASS"/>
+    <br>
+    <br>
+    <input type="submit" value="Register">
+    </form>
+    <br>
+    <br>
+    <% include ./Layout/Header.ejs %> -->
